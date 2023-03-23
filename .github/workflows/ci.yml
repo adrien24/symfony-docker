@@ -27,3 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: composer install  
+
+      # - name: Set up environment
+      #   uses: actions/setup-node@v2.4.0
+      #   with:
+      #     node-version: '16.x'
+
+      - name: Install SQLite
+        run: sudo apt-get install sqlite3  
