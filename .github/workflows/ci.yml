@@ -14,12 +14,10 @@ jobs:
     steps: 
       - name: clone repo
         uses: actions/checkout@v2
-      - name: Use composer
-        uses: php-actions/composer@v5
-        with:
-          php_version: '8'
-          composer_version: '2'
-          composer_args: 'install --no-interaction --no-progress --no-suggest --prefer-dist'  
+      - name: Composer install
+          uses: docker://composer:1.9.1
+          with:
+            args: install
+        
       - name: Install dependencies
         run: composer install --no-interaction --no-progress --no-suggest --prefer-dist
-            
