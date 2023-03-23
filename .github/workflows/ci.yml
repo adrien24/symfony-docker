@@ -24,3 +24,6 @@ jobs:
 
       - name: Test Composer
         run: composer --version
+
+      - name: Install dependencies
+        run: composer install  
