@@ -1,0 +1,25 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: clone repo
+        uses: actions/checkout@v2
+      - name: Use composer
+        uses: php-actions/composer@v5
+        with:
+          php_version: '8'
+          composer_version: '2'
+          composer_args: 'install --no-interaction --no-progress --no-suggest --prefer-dist'  
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --no-suggest --prefer-dist
+            
