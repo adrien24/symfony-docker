@@ -1,12 +1,14 @@
-FROM php:apache
+FROM richarvey/nginx-php-fpm:latest
 
-WORKDIR /app
+COPY ./ /var/www/html
+
+RUN composer install
+RUN php bin/console doctrine:database:create
+RUN php bin/console doctrine:migrations:diff
+RUN php bin/console doctrine:migrations:migrate
+
+ENV WEBROOT /var/www/html/public
+ENV APP_ENV prod
 
 
-RUN apt-get update && apt-get install -y \
-    sqlite3
 
-CMD ["composer","install";"php", "bin/console", "doctrine:database:create"; "php", "bin/console", "doctrine:migrations:diff"; "php", "bin/console", "doctrine:migrations:migrate"; "php", "bin/console", "server:run"; "symfony", "server:start"]
-
-
-COPY / /app
