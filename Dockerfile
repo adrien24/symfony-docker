@@ -3,10 +3,9 @@ FROM trafex/php-nginx:latest
 WORKDIR /app
 
 
-# RUN apk add --no-cache sqlite 
-# RUN php bin/console doctrine:database:create
-# RUN php bin/console doctrine:migrations:diff
-# RUN php bin/console doctrine:migrations:migrate
+RUN apt-get update && apt-get install -y \
+    sqlite3
+   
 
 
 COPY / /app
