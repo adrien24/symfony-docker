@@ -15,7 +15,7 @@ jobs:
       - name: clone repo
         uses: actions/checkout@v2
       - name: Composer install
-          uses: docker://composer:1.9.1
+        uses: docker://composer:2.0
           with:
             args: install
         
