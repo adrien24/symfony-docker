@@ -1,4 +1,4 @@
-FROM trafex/php-nginx:latest
+FROM php:apache
 
 WORKDIR /app
 
