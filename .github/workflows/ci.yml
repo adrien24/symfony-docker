@@ -32,11 +32,11 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.USER }}
+          username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}   
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.USER }}/symfony-app:latest 
+          tags: ghcr.io/${{ secrets.USER }}/symfony-app:latest 
