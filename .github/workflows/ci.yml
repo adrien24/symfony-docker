@@ -14,10 +14,13 @@ jobs:
     steps: 
       - name: clone repo
         uses: actions/checkout@v2
-      - name: Composer install
-        uses: docker://composer:2.0
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
         with:
-          args: install
-        
-      - name: Install dependencies
-        run: composer install --no-interaction --no-progress --no-suggest --prefer-dist
+          php-version: '8.0'
+
+      - name: Install Composer
+        run: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+
+      - name: Test Composer
+        run: composer --version
