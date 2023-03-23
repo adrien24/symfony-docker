@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm:latest
 
 COPY ./ /var/www/html
 
-EXPOSE 80
+EXPOSE 80:80
 
 RUN composer install
 RUN php bin/console doctrine:database:create

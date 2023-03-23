@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
     {
         for ($i = 0; $i < 10; $i++) {
             $article = new Article();
-            $article->setTitle('Article ' . $i);
+            $article->setTitle('Articles ' . $i);
              $manager->persist($article);
         }
 
